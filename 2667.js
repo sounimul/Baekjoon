@@ -25,52 +25,36 @@ input.slice(1,).forEach(arr=> matrix.push(arr.split('').map(Number)));
 const dx = [-1,0,1,0];
 const dy = [0,1,0,-1];
 
-let clear = [];
+let c = 0;
 let cnt = [];
+
 for(let i=0;i<n;i++){
     for(let j=0;j<n;j++){
-        if(matrix[i][j] && !clear.includes(`${i} ${j}`)) {
-            let a = dfs(i,j).length;
-            cnt.push(a);
+        if(matrix[i][j]) {
+            c=0;
+            cnt.push(dfs(i,j));
         }
     }
 }
 
-cnt.sort((a,b)=>a-b);
+function dfs(x,y){
+    
+    matrix[x][y] = 0;
+    c++;
+    
+    for(let i=0;i<4;i++){
+        const nx = x + dx[i];
+        const ny = y + dy[i];
+        if(0<=nx && 0<=ny && n>nx && n>ny && matrix[nx][ny] ){
+            dfs(nx,ny);
+        }
+    }
+    return c;
+}
 
 /* 3.출력 */
+cnt.sort((a,b)=>a-b);
 console.log(cnt.length);
 let answer = '';
 cnt.forEach(s => answer += `${s}\n`);
 console.log(answer);
-
-function dfs(x,y){
-    
-    let visited = [];
-    let stack = [];
-    
-    stack.push(`${x} ${y}`);
-    
-    while(stack.length !==0) {
-    let node = stack.shift();
-    
-    let link = [];
-    
-    for(let i=0;i<4;i++){
-        const nx = +node.split(' ')[0] + dx[i];
-        const ny = +node.split(' ')[1] + dy[i];
-        if(0<=nx && 0<=ny && n>nx && n>ny && matrix[nx][ny] ){
-            link.push(`${nx} ${ny}`);
-        }
-    }
-
-    link = link.filter(ind => !visited.includes(ind));
-
-    if(!visited.includes(node)){
-        visited.push(node);
-        clear.push(node);
-        stack = [...link, ...stack];
-        }
-    }
-    return visited;
-}
