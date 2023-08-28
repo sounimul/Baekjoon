@@ -1,2 +1,1 @@
-4
-CheddarCheese MozzarellaCheese GoudaCheese GranaPadanoCheese
+Union of Computer Programming Contest club contest
