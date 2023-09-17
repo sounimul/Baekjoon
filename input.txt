@@ -1,1 +1,10 @@
-123 100
+3
+Cat
+fat
+bAt
+4
+call
+ball
+All
+Hall
+0
