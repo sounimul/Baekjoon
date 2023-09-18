@@ -1,10 +1,4 @@
 3
-Cat
-fat
-bAt
-4
-call
-ball
-All
-Hall
-0
+this is a test
+foobar
+all your base
