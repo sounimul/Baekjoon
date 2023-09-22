@@ -1,4 +1,2 @@
-3
-config.sys
-config.inf
-configures
+5 1
+5,6,3,9,-1
